@@ -21,4 +21,51 @@
 ##### 先运行RNN_writing_articles.py，当你看到"Model Training Done and Saved!"后，运行RNN_writing.py。（简单，不是吗？）
 
 ## 3、Parameters and Functions in RNN_writing_articles.py 参数和方法
-#####
+### Functions方法:
+#####   name方法名             parameters参数                  function这个函数的作用
+#####   __init__               None                             initializing初始化
+#####   load_text              path                             read text with given path 从给定路径读取文本
+#####   set_parameters         optional paramters很多可选参数    set all the parameters 设定全部参数
+#####   pre_process            None                             pre processings:encode,puncs... 预处理
+#####   get_inputs                                              used in train 在train方法中使用
+#####   get_init_cell                                           used in train 在train方法中使用
+#####   get_embed                                               used in train 在train方法中使用
+#####   build_rnn                                               used in train 在train方法中使用
+#####   build_nn                                                used in train 在train方法中使用
+#####   get_batch                                               used in train 在train方法中使用
+#####   train                  None                             train and save RNN model 训练和保存RNN模型
+
+### Paramters of load_text参数:
+##### name参数名                meaning含义
+##### Path                      giving the path of your novel给定你的待学习文本的路径
+
+### Optional parameters of set_parameters 可选参数
+##### name参数名       default默认值          meaning含义
+##### word_num          100000                num of word used for training 选取的学习文本长度（字）
+##### epochs            200                   epochs of learning 学习轮次
+##### batch_size        128                   size of batch batch的大小
+##### RNN_size          256                   num of RNN cells RNN神经元数
+##### embedding_size    256                   size of embedding 词向量维度
+##### seq_len           32                    step of reading 学习步长
+##### learning_rate     0.01                  learning rate 学习速率
+##### output_rate       5                     frequency of outputing loss loss每多少次更新输出一次
+##### layer_num         3                     num of layers 网络层数
+##### dropout_keep_rate 0.8                   rate of connections kept during dropout dropout过程中保留比例
+
+## 4、Parameters and Functions in RNN_writing.py 参数和方法
+### Functions方法:
+#####   name方法名             parameters参数                  function这个函数的作用
+#####   __init__               None                             initializing初始化
+#####   preparing              None                             load the saves 载入保存
+#####   get_tensors                                             used in get_novel 在get_novel方法中使用
+#####   choose_word                                             used in get_novel 在get_novel方法中使用  
+#####   get_novel             start_word optional parameters    write new novels 写出新的文章
+
+### Paramters of get_novel参数:
+##### name参数名                meaning含义
+##### start_word                start word of new novel 给定新文章的起始词
+
+### Optional parameters of get_novel 可选参数
+##### name参数名       default默认值          meaning含义
+##### novel_len         500                   length of new novel 给定新写的文本的长度
+##### end_at_punc       True                  whether to stop at "。" 是否在句号处停止
